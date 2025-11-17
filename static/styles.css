@@ -1,0 +1,140 @@
+:root {
+  color-scheme: light dark;
+  font-family: "Segoe UI", system-ui, -apple-system, sans-serif;
+  line-height: 1.5;
+  font-weight: 400;
+  background-color: #0d1117;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: linear-gradient(145deg, #0b1e3f, #111827, #090f1d);
+  padding: 2rem;
+  color: #f8fafc;
+}
+
+.app-shell {
+  width: min(840px, 100%);
+  background: rgba(13, 17, 23, 0.85);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 1.25rem;
+  padding: 2rem;
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.35);
+  backdrop-filter: blur(16px);
+}
+
+header {
+  margin-bottom: 2rem;
+}
+
+h1 {
+  margin: 0;
+  font-size: 2rem;
+}
+
+header p {
+  margin: 0.25rem 0 0;
+  color: #b6c2ff;
+}
+
+.hint {
+  font-size: 0.9rem;
+  color: #8892b0;
+}
+
+.task-form {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+label {
+  font-weight: 600;
+  color: #d1d9f5;
+}
+
+textarea {
+  resize: vertical;
+  padding: 1rem;
+  border-radius: 0.75rem;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  background: rgba(13, 17, 23, 0.6);
+  color: inherit;
+  font-size: 1rem;
+  min-height: 140px;
+}
+
+button {
+  align-self: flex-start;
+  padding: 0.85rem 1.75rem;
+  border: none;
+  border-radius: 999px;
+  background: linear-gradient(120deg, #7c3aed, #a855f7, #ec4899);
+  color: #fff;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+  text-transform: uppercase;
+  cursor: pointer;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+button:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 15px 35px rgba(236, 72, 153, 0.3);
+}
+
+.callout {
+  margin-top: 2rem;
+  padding: 1.25rem;
+  border-radius: 1rem;
+  background: rgba(15, 23, 42, 0.8);
+  border: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.callout h2 {
+  margin: 0 0 0.5rem;
+  font-size: 1.1rem;
+  color: #cbd5f5;
+}
+
+.callout pre {
+  white-space: pre-wrap;
+  word-break: break-word;
+  margin: 0;
+  font-family: "JetBrains Mono", "Fira Code", Consolas, monospace;
+  font-size: 0.95rem;
+  line-height: 1.6;
+}
+
+.callout.error {
+  border-color: rgba(248, 113, 113, 0.3);
+  background: rgba(120, 14, 37, 0.65);
+}
+
+.callout.result {
+  border-color: rgba(96, 165, 250, 0.25);
+}
+
+@media (max-width: 640px) {
+  body {
+    padding: 1rem;
+  }
+
+  .app-shell {
+    padding: 1.5rem;
+  }
+
+  button {
+    width: 100%;
+    text-align: center;
+  }
+}
+

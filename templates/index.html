@@ -1,0 +1,41 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Browser Agent Runner</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}" />
+  </head>
+  <body>
+    <div class="app-shell">
+      <header>
+        <h1>Browser Use Agent</h1>
+        <p>Model: <span>{{ model }}</span></p>
+        <p class="hint">Enter a task for the agent and submit to run it.</p>
+      </header>
+
+      <main>
+        <form method="post" class="task-form">
+          <label for="task">Task</label>
+          <textarea id="task" name="task" rows="4" required>{{ task }}</textarea>
+          <button type="submit">Run Agent</button>
+        </form>
+
+        {% if error %}
+        <section class="callout error">
+          <h2>Something went wrong</h2>
+          <p>{{ error }}</p>
+        </section>
+        {% endif %}
+
+        {% if result %}
+        <section class="callout result">
+          <h2>Result</h2>
+          <pre>{{ result }}</pre>
+        </section>
+        {% endif %}
+      </main>
+    </div>
+  </body>
+</html>
+
