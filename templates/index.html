@@ -28,10 +28,58 @@
         </section>
         {% endif %}
 
-        {% if result %}
+        {% if result_summary or result_pretty %}
         <section class="callout result">
           <h2>Result</h2>
-          <pre>{{ result }}</pre>
+          {% if result_summary %}
+          {% if result_summary.final_html %}
+          <div class="final-answer">{{ result_summary.final_html }}</div>
+          {% elif result_summary.final_text %}
+          <pre>{{ result_summary.final_text }}</pre>
+          {% endif %}
+
+          {% if result_summary.steps %}
+          <details class="result-details" open>
+            <summary>Agent steps</summary>
+            <ol class="agent-steps">
+              {% for step in result_summary.steps %}
+              <li>
+                <p class="step-title">Step {{ step.number or loop.index }}</p>
+                {% if step.status %}<p class="step-status">{{ step.status }}</p>{% endif %}
+                {% if step.next_goal %}<p><strong>Next goal:</strong> {{ step.next_goal }}</p>{% endif %}
+                {% if step.actions %}
+                <p><strong>Actions:</strong></p>
+                <ul>
+                  {% for action in step.actions %}
+                  <li>{{ action }}</li>
+                  {% endfor %}
+                </ul>
+                {% endif %}
+                {% if step.outcome %}
+                <p><strong>Outcome:</strong></p>
+                <ul>
+                  {% for outcome in step.outcome %}
+                  {% if outcome %}
+                  <li>{{ outcome }}</li>
+                  {% endif %}
+                  {% endfor %}
+                </ul>
+                {% endif %}
+              </li>
+              {% endfor %}
+            </ol>
+          </details>
+          {% endif %}
+
+          {% if result_pretty %}
+          <details class="result-details">
+            <summary>Raw output</summary>
+            <pre>{{ result_pretty }}</pre>
+          </details>
+          {% endif %}
+          {% else %}
+          <pre>{{ result_pretty }}</pre>
+          {% endif %}
         </section>
         {% endif %}
       </main>
